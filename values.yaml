@@ -27,6 +27,13 @@ deployment:
     memory: 400Mi
   additionalSecretRefs:
   - name: postgres.papyrus-prod.credentials.postgresql.acid.zalan.do
+  initContainer:
+    name: ecto-migration
+    image: ghcr.io/preparingforexams/papyrus-api:__TAG__
+    command: /app/bin/server
+    args:
+      - eval
+      - '"PapyrusApi.Release.Migrate"'
 
 configmap:
   name: papyrus-api

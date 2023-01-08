@@ -18,6 +18,15 @@ spec:
         {{ $k }}: {{ $v }}
         {{- end }}
     spec:
+      initContainers:
+        - name: {{ .Values.deployment.initContainer.name }}
+          image: {{ .Values.deployment.initContainer.image }}
+          command:
+            - {{ .Values.deployment.initContainer.command }}
+          args:
+            {{- range .Values.deployment.initContainer.args }}
+            - {{ . }}
+            {{- end }}
       containers:
       - name: {{ .Values.deployment.name }}
         image: {{ .Values.deployment.image }}
