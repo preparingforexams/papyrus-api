@@ -32,6 +32,12 @@ spec:
               name: {{ .Values.configmap.name }}
           - secretRef:
               name: {{ .Values.secret.name }}
+          {{- if (.Values.deployment).additionalSecretRefs }}
+          {{- range $ref := .Values.deployment.additionalSecretRefs }}
+          - secretRef:
+              {{ $ref | toYaml }}
+          {{- end }}
+          {{- end }}
         resources:
           requests:
             cpu: {{ .Values.deployment.requests.cpu }}

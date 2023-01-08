@@ -25,6 +25,8 @@ deployment:
   limit:
     cpu: 400m
     memory: 400Mi
+  additionalSecretRefs:
+  - name: postgres.papyrus-prod.credentials.postgresql.acid.zalan.do
 
 configmap:
   name: papyrus-api
