@@ -1,0 +1,41 @@
+namespace: papyrus
+
+database:
+  name: papyrus-prod
+  team: papyrus
+  replicas: 1
+  volume:
+    size: 1Gi
+  postgres:
+    version: 14
+
+deployment:
+  name: papyrusapi
+  image: ghcr.io/preparingforexams/papyrus-api:__TAG__
+  imagePullPolicy: Always
+  revisionHistoryLimit: 1
+  replicas: 2
+  labels:
+    app: papyrusapi
+  ports:
+    - 4000
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limit:
+    cpu: 400m
+    memory: 400Mi
+
+configmap:
+  name: papyrus-api
+  host: openalcohlics.group
+
+secret:
+  name: papyrus-api
+  keyBase: __SECRET_KEY_BASE__ # TODO: inject via GHA from GH secrets (`SECRET_KEY_BASE` is the GH secret name)
+
+service:
+  name: papyrusapi
+  port: 80
+  targetPort: 4000
+  appSelector: papyrusapi
