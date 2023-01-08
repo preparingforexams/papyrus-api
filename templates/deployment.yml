@@ -27,6 +27,17 @@ spec:
             {{- range .Values.deployment.initContainer.args }}
             - {{ . }}
             {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.configmap.name }}
+            - secretRef:
+                name: {{ .Values.secret.name }}
+            {{- if (.Values.deployment).additionalSecretRefs }}
+            {{- range $ref := .Values.deployment.additionalSecretRefs }}
+            - secretRef:
+                {{ $ref | toYaml }}
+            {{- end }}
+            {{- end }}
       containers:
       - name: {{ .Values.deployment.name }}
         image: {{ .Values.deployment.image }}
