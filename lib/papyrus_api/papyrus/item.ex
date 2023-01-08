@@ -3,7 +3,7 @@ defmodule PapyrusApi.Papyrus.Item do
   import Ecto.Changeset
 
   schema "items" do
-    field :description, :string
+    field :description, :string # optional
     field :name, :string
 
     timestamps()
@@ -13,6 +13,7 @@ defmodule PapyrusApi.Papyrus.Item do
   def changeset(item, attrs) do
     item
     |> cast(attrs, [:name, :description])
-    |> validate_required([:name, :description])
+    |> unique_constraint(:name)
+    |> validate_required([:name])
   end
 end

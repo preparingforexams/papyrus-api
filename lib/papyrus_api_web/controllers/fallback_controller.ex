@@ -31,6 +31,6 @@ defmodule PapyrusApiWeb.FallbackController do
   def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
     conn
     |> put_status(:unprocessable_entity)
-    |> render(PapyrusApi.ChangesetView, "error.json", changeset: changeset)
+    |> render(PapyrusApiWeb.ChangesetView, "error.json", changeset: changeset)
   end
 end

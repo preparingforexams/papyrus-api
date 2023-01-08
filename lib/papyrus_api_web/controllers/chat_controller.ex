@@ -12,8 +12,6 @@ defmodule PapyrusApiWeb.ChatController do
   end
 
   def create(conn, %{"chat" => chat_params}) do
-    IO.inspect chat_params
-
     with {:ok, %Chat{} = chat} <- Telegram.create_chat(chat_params) do
       conn
       |> put_status(:created)
