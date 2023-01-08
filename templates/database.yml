@@ -21,4 +21,4 @@ spec:
     version: {{ .Values.database.postgres.version | quote }}
   env:
     - name: ALLOW_NOSSL
-      value: true
+      value: "true"
