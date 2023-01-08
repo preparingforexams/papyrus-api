@@ -41,7 +41,7 @@ configmap:
 
 secret:
   name: papyrus-api
-  keyBase: __SECRET_KEY_BASE__ # TODO: inject via GHA from GH secrets (`SECRET_KEY_BASE` is the GH secret name)
+  keyBase: __SECRET_KEY_BASE__
 
 service:
   name: papyrusapi

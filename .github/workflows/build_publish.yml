@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: sed -i -e "s#__TAG__#${GITHUB_SHA}#g" values.yaml
-      - run: sed -i -e "s#__OPEN_WEATHER_MAP_KEY__#${{ secrets.OPENWEATHERMAP_APIKEY_RAW }}#g" values.yaml
+      - run: sed -i -e "s#__OPEN_WEATHER_MAP_KEY__#${{ secrets.SECRET_KEY_BASE }}#g" values.yaml
       - uses: WyriHaximus/github-action-helm3@v2
         with:
           exec: helm upgrade papyrus-api . --install --namespace=papyrus --atomic
