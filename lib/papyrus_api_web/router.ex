@@ -20,6 +20,20 @@ defmodule PapyrusApiWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", PapyrusApiWeb do
+    pipe_through :api
+
+    get "/items", ItemController, :index
+    put "/items", ItemController, :update
+    post "/items", ItemController, :create
+    delete "/items", ItemController, :delete
+
+    get "/chats", ChatController, :index
+    put "/chats", ChatController, :update
+    post "/chats", ChatController, :create
+    delete "/chats", ChatController, :delete
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", PapyrusApiWeb do
   #   pipe_through :api
