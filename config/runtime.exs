@@ -21,12 +21,37 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
+  database_host =
+    System.get_env("DATABASE_HOST") ||
+      raise """
+      environment variable DATABASE_HOST is missing.
+      For example: localhost:5432
+      """
+
+  database_user =
+    System.get_env("username") ||
+      raise """
+      environment variable username is missing.
+      For example: postgres
+      """
+
+  database_password =
+    System.get_env("password") ||
+      raise """
+      environment variable password is missing.
+      For example: postgres
+      """
+
+  database_name =
+    System.get_env("DATABASE_NAME") ||
+      raise """
+      environment variable DATABASE_NAME is missing.
+      For example: papyrus_api
+      """
+
   database_url =
     System.get_env("DATABASE_URL") ||
-      raise """
-      environment variable DATABASE_URL is missing.
-      For example: ecto://USER:PASS@HOST/DATABASE
-      """
+      "ecto://#{database_user}:#{database_password}@#{database_host}/#{database_name}"
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6"), do: [:inet6], else: []
 
