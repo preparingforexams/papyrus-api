@@ -38,6 +38,9 @@ deployment:
 configmap:
   name: papyrus-api
   host: openalcohlics.group
+  postgres:
+    host: papyrus-prod:5432
+    name: papyrus_api
 
 secret:
   name: papyrus-api

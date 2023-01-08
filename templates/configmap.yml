@@ -5,3 +5,5 @@ metadata:
   namespace: {{ .Values.namespace | default .Release.Namespace }}
 data:
   PHX_HOST: {{ .Values.configmap.host }}
+  DATABASE_HOST: {{ .Values.configmap.postgres.host }}
+  DATABASE_NAME: {{ .Values.configmap.postgres.name }}
