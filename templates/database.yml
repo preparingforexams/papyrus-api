@@ -14,9 +14,9 @@ spec:
       - createdb
     postgres:
       - createdb
-  databases:
-    papyrus_api: postgres
-  preparedDatabases: {}
+  preparedDatabases:
+    papyrus_api:
+      defaultUsers: true
   postgresql:
     version: {{ .Values.database.postgres.version | quote }}
   env:
