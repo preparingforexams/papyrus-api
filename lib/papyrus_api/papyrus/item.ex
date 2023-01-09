@@ -13,7 +13,7 @@ defmodule PapyrusApi.Papyrus.Item do
   def changeset(item, attrs) do
     item
     |> cast(attrs, [:name, :description])
-    |> unique_constraint(:name)
+    |> unique_constraint(:name, name: :unique_name_for_item)
     |> validate_required([:name])
   end
 end
