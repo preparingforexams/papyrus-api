@@ -33,7 +33,7 @@ deployment:
     command: /app/bin/papyrus_api
     args:
       - eval
-      - "\"\\\"PapyrusApi.Release migrate\\\"\""
+      - "\"\\\"PapyrusApi.Release.migrate\\\"\""
 
 configmap:
   name: papyrus-api
