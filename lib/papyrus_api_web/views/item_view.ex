@@ -14,7 +14,8 @@ defmodule PapyrusApiWeb.ItemView do
     %{
       id: item.id,
       name: item.name,
-      description: item.description
+      description: item.description,
+      done: item.done,
     }
   end
 end
