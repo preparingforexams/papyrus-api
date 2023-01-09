@@ -15,7 +15,7 @@ defmodule PapyrusApiWeb.ChatController do
     with {:ok, %Chat{} = chat} <- Telegram.create_chat(chat_params) do
       conn
       |> put_status(:created)
-      |> put_resp_header("location", Routes.chat_path(conn, :show, chat))
+#      |> put_resp_header("location", Routes.chat_path(conn, :show, chat))
       |> render("show.json", chat: chat)
     end
   end
