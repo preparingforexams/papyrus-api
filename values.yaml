@@ -30,10 +30,10 @@ deployment:
   initContainer:
     name: ecto-migration
     image: ghcr.io/preparingforexams/papyrus-api:__TAG__
-    command: /app/bin/server
+    command: /app/bin/papyrus_api
     args:
       - eval
-      - '"PapyrusApi.Release.Migrate"'
+      - "\"PapyrusApi.Release migrate\""
 
 configmap:
   name: papyrus-api
